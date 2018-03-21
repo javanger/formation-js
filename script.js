@@ -8,10 +8,12 @@ const req = new XMLHttpRequest();
             var tableau = JSON.parse(this.responseText);
             var chaine = "<table border='2' width='200'>"
             chaine += "<tr><th>Id.</th><th>Name</th><th>Password</th></tr>"
-            tableau.forEach(personne =>
-              chaine +="<tr><td>" + personne.id + "</td><td>"
-                + personne.name + "</td><td>"
-                + personne.password + "</td></tr>"
+            tableau.forEach(personne => {
+              if(personne.name)
+                chaine +="<tr><td>" + personne.id + "</td><td>"
+                  + personne.name + "</td><td>"
+                  + personne.password + "</td></tr>"
+              }
             )
             chaine +="</table>"
             document.getElementById('test').innerHTML = chaine
