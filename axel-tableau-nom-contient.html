@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+	<script type="text/javascript">
+		function age(){		
+
+			var tab_personnes = [
+				{ nom: 'anatole', age: 19 },
+				{ nom: 'bernard', age: 45 },
+				{ nom: 'christophe', age: 34 },
+				{ nom: 'dominique', age: 55 },
+				{ nom: 'franck', age: 28 },
+				{ nom: 'lucas', age: 78 },
+				{ nom: "georges", age: 78 },
+				{ nom: 'madeleine', age: 12 },
+				{ nom: 'pierre', age: 30 }
+			]	
+			
+
+
+            var tousLesNoms = "";
+
+            for(var i in tab_personnes) {
+
+                if(i.indexOf(nom) != -1) {
+                    tousLesNoms += i + " ";
+                }
+    
+            }
+
+            alert(tousLesNoms);
+		}
+		
+	</script>
+	</head>
+	<body>
+		<form name ="boutton">
+		<input id="monInput" type="text" />
+		<button onclick='age()'>Quel age as-tu ?</button>
+		<button onclick='age()'>Chercher prénoms</button>
+	</form>
+	</body>
+</html>
