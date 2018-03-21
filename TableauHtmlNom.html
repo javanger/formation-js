@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <script type="text/javascript">
+      function age(){
+        var tab_personnes = [
+				{ nom: 'anatole', age: 19 },
+				{ nom: 'bernard', age: 45 },
+				{ nom: 'christophe', age: 34 },
+				{ nom: 'dominique', age: 55 },
+				{ nom: 'franck', age: 28 },
+				{ nom: 'lucas', age: 78 },
+				{ nom: "georges", age: 78 },
+				{ nom: 'madeleine', age: 12 },
+				{ nom: 'pierre', age: 30 }
+			]
+
+      chaine= document.getElementById('monInput').value;
+      resultat="";
+      for(x=0;x<tab_personnes.length;x++){
+        if(tab_personnes[x].nom.includes(chaine))
+          resultat += " " +tab_personnes[x].nom;
+      }
+      alert(resultat);
+    }
+
+    </script>
+  </head>
+
+  <body>
+      <input id="monInput" type="text" />
+		  <button onclick='age()'>Quel prenom contient ces lettres ?</button>
+  </body>
+
+</html>
