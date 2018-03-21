@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+    <meta charset="utf-8">
+	<script type="text/javascript">
+	
+    const req = new XMLHttpRequest();
+
+    req.onreadystatechange = function(event) {
+    // XMLHttpRequest.DONE === 4
+    if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+                console.log("Réponse reçue: %s", this.responseText);
+                var tableau = JSON.parse(this.responseText);
+                document.write("<table border='1' width='250'>")
+                document.write("<tr><th>Id.</th><th>Name</th><th>Password</th></tr>")
+                tableau.forEach(personne =>
+                  document.write("<tr><td>" + personne.id + "</td><td>" + personne.name + "</td><td>"  + personne.password + "</td></tr>")
+                )
+                document.write("</table>")
+            }  else {
+            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+        }
+    }
+};
+
+req.open('GET', 'http://loisirs-web-backend.cleverapps.io/users', true);
+req.send(null);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
