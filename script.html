@@ -11,31 +11,35 @@
 <body>
 
     <input type="text" name="" id="prenom" value="lucas">
-    <input type="button" name="" id="" value="Quel age as-tu ?" onclick="showAge()">
+    <input type="button" name="" id="" value="Rechercher" onclick="showMatch()">
 
     <script>
 
 
-        function showAge() {
-            var personnes = {
-                "anatole": 19,
-                "bernard": 45,
-                "christophe": 34,
-                "dominique": 55,
-                "franck": 28,
-                "georges": 78,
-                "lucas": 12,
-                "madelaine": 30,
-                "pierre": 25
-            };
+        function showMatch() {
+            var personnes = [
+                { nom: "anatole", age: 19 },
+                { nom: "bernard", age: 45 },
+                { nom: "christophe", age: 34 },
+                { nom: "dominique", age: 55 },
+                { nom: "franck", age: 28 },
+                { nom: "georges", age: 78 },
+                { nom: "lucas", age: 12 },
+                { nom: "madelaine", age: 30 },
+                { nom: "pierre", age: 25 }
+            ];
 
-            var prenom = document.getElementById('prenom').value;
-            var prenomMaj = prenom.charAt(0).toUpperCase() + prenom.slice(1);
-            if(personnes[prenom] != null) {
-                alert(prenomMaj + " a " + personnes[prenom] + " ans");
-            } else {
-                alert("Je ne connais pas " + prenomMaj);
-            }
+            var value = document.getElementById('prenom').value;
+
+            var founds = "";
+
+            personnes.forEach(person => {
+                if (person.nom.includes(value)) {
+                    founds += person.nom + " \n";
+                }
+            });
+
+            alert(founds);
         }
 
 
