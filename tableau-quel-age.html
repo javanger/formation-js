@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        function age() {
+
+            /*
+                    var tab_personnes = [{ nom: "anatole", age: 19 },
+                        { nom: "bernard", age: 45 },
+                        { nom: "christophe", age: 34 },
+                        { nom: "dominique", age: 55 },
+                        { nom: "franck", age: 28 },
+                        { nom: "georges", age: 78 },
+                        { nom: "lucas", age: 12 },
+                        { nom: "madeleine", age: 30 },
+                        { nom: "pierre", age: 25 }]
+            */
+
+            var tab_personnes = [{ nom: "anatole", age: 19 },
+            { nom: "bernard", age: 45 },
+            { nom: "christophe", age: 34 },
+            { nom: "dominique", age: 55 },
+            { nom: "franck", age: 28 },
+            { nom: "georges", age: 78 },
+            { nom: "lucas", age: 12 },
+            { nom: "madeleine", age: 30 },
+            { nom: "pierre", age: 25 }]
+
+
+            var saisie = document.getElementById("monInput").value
+            var carater = ""
+
+            if (saisie == "") {
+                alert("veuillez saisie une nouvelle valeur")
+            }
+            else {
+                for (i = 0; i < tab_personnes.length; i++) {
+                    if (tab_personnes[i].nom.includes(saisie)) {
+                        carater += tab_personnes[i].nom.charAt(0).toUpperCase() + tab_personnes[i].nom.slice(1) + " a " + tab_personnes[i].age + " ans  ";
+                    }
+
+                }
+                alert(carater)
+            }
+        }
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <input id="monInput" type="text" />
+    <button onclick='age()'>Quel age as-tu ?</button>
+</body>
+
+</html>
