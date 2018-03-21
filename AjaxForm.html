@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>Inséré votre nom et mot de passe</h3>
+	<form>
+		NAME<input id= "name" type="text"/>
+		PASSWORD<input id= "password" type="text"/></br>
+		<button>valider</button>
+	</form>
+
+	<div id="b">
+	</div>
+
+	<script type="text/javascript">
+
+	const req = new XMLHttpRequest();
+
+	req.onreadystatechange = function(event) {
+
+		if (this.readyState === XMLHttpRequest.DONE) {
+			if (this.status === 200) {
+				console.log("Réponse reçue: %s", this.responseText)
+				var tab =JSON.parse(this.responseText)
+				var a = "<table border =\"3px blue dashed\">"
+				a+="<tr><td>Id</td><td>Name</td><td>Password</td></tr>"
+				tab.forEach(personne => a+=
+					"<tr><td>" + personne.id +
+					"</td><td>" + personne.name +
+					"</td><td>" + personne.password + "</td></tr>"
+
+				)
+				a +="</table>"
+				document.getElementById("b").innerHTML = a
+			} else {
+				console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+			}
+		}
+	}
+	req.open('GET', 'http://app-6443389f-f19e-4b11-80f6-6975352681e5.cleverapps.io/users', true);
+	req.send(null);
+
+	document.querySelector("button").addEventListener('click', function(evt) {
+		evt.preventDefault()
+		const reqPost = new XMLHttpRequest();
+		var name = document.getElementById("name").value
+		var password= document.getElementById("password").value
+		var form = {"name" : name, "password": password}
+		var variable = JSON.stringify(form)
+		reqPost.open('POST', 'http://app-6443389f-f19e-4b11-80f6-6975352681e5.cleverapps.io/users', true);
+		reqPost.setRequestHeader("Content-type", "application/json")
+		reqPost.send(variable);
+	})
+
+</script>
+</body>
+</html>
