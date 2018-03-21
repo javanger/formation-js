@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.writeln("Je suis un titre de tableau :D");
+      document.write("<table border=2 ><tr>");
+      for(x=1; x<13; x++){
+        if (x%4 == 1) {
+          document.write("</tr><tr>");
+        }
+        document.write("<td width= 30 align=center>");
+        document.write(x);
+        document.write("</td>");
+      }
+      document.write("</tr></table>");
+    </script>
+  </body>
+</html>
