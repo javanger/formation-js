@@ -43,22 +43,52 @@
                 }
             };
             xhr.send();
+
         }
 
         function JSONtoUndefined(reponse) {
 
             myObj = JSON.parse(reponse);
 
+            compteur = 0
+
             myObj.forEach(function (personne) {
 
-                if (personne.name == "undefined") {
-                    console.log("test");
+                compteur += 1;
+
+                if (personne.name == undefined || personne.name == "" || personne.password == "") {
+                    deleteUndefined(personne.id);
                 }
 
             });
+
+            alert("Suppression de " + compteur + " personnes");
         }
 
-        
+        function getAllPersonns() {
+
+            const req = new XMLHttpRequest();
+
+            req.onreadystatechange = function (event) {
+                // XMLHttpRequest.DONE === 4
+                if (this.readyState === XMLHttpRequest.DONE) {
+                    if (this.status === 200) {
+                        console.log("Réponse reçue: %s", this.responseText);
+                        var reponse = this.responseText;
+
+                        JSONtoUndefined(reponse);
+
+                    } else {
+                        console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                    }
+                }
+            };
+
+            req.open('GET', 'http://loisirs-web-backend.cleverapps.io/users', true);
+            req.send(null);
+        }
+
+
 
     </script>
 
@@ -83,7 +113,7 @@
 
         <tr>
             <td>
-                <button onclick="deleteUndefined()">Supprimer</button>
+                <button onclick="getAllPersonns()">Supprimer</button>
             </td>
             <td>
                 <button onclick="sendPersonne()">Envoyer</button>
