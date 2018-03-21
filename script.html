@@ -9,11 +9,12 @@
 <body>
     <script>
 
-        var tab = "<table border=1 ><tr>";
+        var titre = "<h1>Je suis un titre de tableau :-) </h1><br/>";
+        var tab = titre + "<table border=1 ><tr>";
         
         for (let i = 1; i <= 12; i++) {
             
-            tab += "<td width=20>" + i + "</td>";
+            tab += "<td width=50>" + i + "</td>";
             if(i % 4 == 0) {
                 tab += "</tr><tr>";
             }
