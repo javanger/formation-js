@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+	<script type="text/javascript">
+		function age(){		
+			var tab_personnes= {
+							"anatole":19,
+							"bernard":45,
+							"christophe":34,
+							"dominique":55,
+							"franck":28,
+							"georges":78,
+							"lucas":12,
+							"madeleine":30,
+							"pierre":25 };	
+			
+			var nom = document.getElementById("monInput").value;
+
+            var tousLesNoms = "";
+
+            for(var i in tab_personnes) {
+
+                if(i.indexOf(nom) != -1) {
+                    tousLesNoms += i + " ";
+                }
+    
+            }
+
+            alert(tousLesNoms);
+		}
+	</script>
+	</head>
+	<body>
+		<input id="monInput" type="text" />
+		<button onclick='age()'>Quel age as-tu ?</button>
+	</body>
+</html>
