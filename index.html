@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <input type="button" name="" id="delete" value="DELETE ALL">
+    <table id="table" border=1></table>
+    <h2>Ajouter</h2>
+    <form id="post">
+        <input type="text" name="" id="name">
+        <br>
+        <input type="text" name="" id="password">
+        <br>
+        <input type="submit" name="" id="" value="SEND">
+    </form>
+
+
+    <script>
+        var uri = "http://loisirs-web-backend.cleverapps.io/users";
+        const xhttp = new XMLHttpRequest();
+        var inflateTable = values => {
+            //console.log(values);
+            values
+                .map(e => "<tr><td width=40>" + e.id + "</td><td>" +
+                    e.name + "</td><td>" +
+                    e.password + "</td></td>")
+                .forEach(e => {
+                    document.getElementById("table").innerHTML += e;
+                });
+        }
+
+        getAjax(xhttp, uri);
+
+        function ajax(xhttp, method, uri, data, callback, xhttpConfig) {
+            // console.log("ajax method ", method, " uri ", uri, " data ", data, " callback " + callback);
+
+            xhttp.onreadystatechange = function (event) {
+                if (this.readyState === XMLHttpRequest.DONE) {
+                    if (this.status === 200 || this.status === 201) {
+                        //console.log("reponse " + this.responseText);
+                        callback(JSON.parse(this.responseText));
+                    } else {
+                        console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                    }
+                }
+            };
+            xhttp.open(method, uri, true);
+            if (xhttpConfig) {
+                xhttpConfig(data);
+            } else {
+                xhttp.send();
+            }
+        }
+
+        function getAjax(xhttp, uri) {
+            //console.log("getAjax " + uri);
+            ajax(xhttp, "GET", uri, null, inflateTable);
+        }
+
+        function postAjax(xhttp, uri, data) {
+            ajax(xhttp, 'POST', uri, data, (data) => getAjax(xhttp, uri), (data) => {
+                xhttp.setRequestHeader('Content-Type', 'application/json');
+                xhttp.send(JSON.stringify(data));
+            });
+        }
+
+        var sendData = (event) => {
+            event.preventDefault();
+            var uri = "http://loisirs-web-backend.cleverapps.io/users";
+            var name = document.getElementById("name").value;
+            var password = document.getElementById("password").value;
+
+            // transformer
+            var object = {
+                id: "",
+                "name": name,
+                "password": password
+            };
+            // console.log(object);
+
+            postAjax(xhttp, uri, object);
+        }
+
+        document.getElementById('post').onsubmit = sendData;
+
+
+    </script>
+</body>
+
+</html>
