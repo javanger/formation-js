@@ -3,35 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <title>JavaScript</title>
-    <script type="text/javascript">
-    const req = new XMLHttpRequest();
 
-      req.onreadystatechange = function(event) {
-        // XMLHttpRequest.DONE === 4
-        if (this.readyState === XMLHttpRequest.DONE) {
-            if (this.status === 200) {
-                console.log("Réponse reçue: %s", this.responseText);
-                var tableau = JSON.parse(this.responseText);
-                document.write("<table border='2' width='200'>")
-                document.write("<tr><th>Id.</th><th>Name</th><th>Password</th></tr>")
-                tableau.forEach(personne =>
-                  document.write("<tr><td>" + personne.id + "</td><td>"
-                    + personne.name + "</td><td>"
-                    + personne.password + "</td></tr>")
-                )
-                document.write("</table>")
-            } else {
-                console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
-            }
-        }
-      };
-      req.open('GET', 'http://app-6443389f-f19e-4b11-80f6-6975352681e5.cleverapps.io/users', true);
-      req.send(null);
-
-    </script>
   </head>
 
   <body>
+    <form >
+      Name<input type="text" id="nom" name="nom"/>
+      Password<input type="text" id="password" name="password"/>
+      <button>Valider</button>
+    </form>
+
+    <div id='test' name="test">
+
+    </div>
+    <script src="script.js"></script>
 	</body>
 
 </html>
