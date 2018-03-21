@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+
+    <script>
+
+        const req = new XMLHttpRequest();
+
+        req.onreadystatechange = function (event) {
+            // XMLHttpRequest.DONE === 4
+            if (this.readyState === XMLHttpRequest.DONE) {
+                if (this.status === 200) {
+                    JSONtoTable(this.responseText);
+                    console.log(this.response);
+                } else {
+                    console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                }
+            }
+        };
+
+        req.open('GET', 'http://loisirs-web-backend.cleverapps.io/users', true);
+        req.send(null);
+
+        function JSONtoTable(reponse) {
+
+            myObj = JSON.parse(reponse);
+
+            tableau = "<table border='1'><tr><th>Id.</th><th>Name</th><th>Password</th></tr>"
+
+            myObj.forEach(personne =>
+
+                tableau += "<tr><td>" + personne.id + "</td><td>" + personne.name + "</td><td>" + personne.password + "</td></tr>"
+
+            )
+
+            tableau += "</table>"
+
+            document.write(tableau);
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
