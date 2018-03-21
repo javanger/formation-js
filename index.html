@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+
+
+
+
+        const req = new XMLHttpRequest();
+
+        req.onreadystatechange = function (event) {
+            // XMLHttpRequest.DONE === 4
+            if (this.readyState === XMLHttpRequest.DONE) {
+                if (this.status === 200) {
+                    var tableau = JSON.parse(this.responseText);
+
+                    var chaine = '';
+                    chaine += '<table border ="1" >';
+                    tableau.forEach(element => {
+                        chaine += '</tr><tr>';
+                        chaine += '<td>' + element.name + '</td>';
+                        chaine += '<td>' + element.password + '</td>';
+                    });
+                    chaine += '</table>';
+                    document.write(chaine);
+                } else {
+                    console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                }
+            }
+        };
+
+        req.open('GET', 'http://loisirs-web-backend.cleverapps.io/users', true);
+        req.send(null)
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+</html>
