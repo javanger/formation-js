@@ -39,7 +39,6 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var json = JSON.parse(xhr.responseText);
-                    console.log(json.name + ", " + json.password);
                 }
             };
             xhr.send();
@@ -50,14 +49,14 @@
 
             myObj = JSON.parse(reponse);
 
-            compteur = 0
+            var compteur = 0
 
             myObj.forEach(function (personne) {
 
-                compteur += 1;
-
                 if (personne.name == undefined || personne.name == "" || personne.password == "") {
                     deleteUndefined(personne.id);
+
+                    compteur += 1;
                 }
 
             });
