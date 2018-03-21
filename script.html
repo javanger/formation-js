@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" name="" id="prenom" value="lucas">
+    <input type="button" name="" id="" value="Quel age as-tu ?" onclick="showAge()">
+
+    <script>
+
+
+        function showAge() {
+            var personnes = {
+                "anatole": 19,
+                "bernard": 45,
+                "christophe": 34,
+                "dominique": 55,
+                "franck": 28,
+                "georges": 78,
+                "lucas": 12,
+                "madelaine": 30,
+                "pierre": 25
+            };
+
+            var prenom = document.getElementById('prenom').value;
+            var prenomMaj = prenom.charAt(0).toUpperCase() + prenom.slice(1);
+            if(personnes[prenom] != null) {
+                alert(prenomMaj + " a " + personnes[prenom] + " ans");
+            } else {
+                alert("Je ne connais pas " + prenomMaj);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
