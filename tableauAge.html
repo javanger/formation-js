@@ -16,10 +16,11 @@
 							"pierre":25 };
       if (document.getElementById('monInput').value == "") {
         alert("Veuillez renseigner un prénom");
+      }else{
+        var prenom = document.getElementById('monInput').value;
+        var chaine = prenom.charAt(0).toUpperCase()+ prenom.slice(1)+" a "+tab_personnes[prenom]+" ans";
+			   alert(chaine);
       }
-      var prenom = document.getElementById('monInput').value;
-      var chaine = prenom.charAt(0).toUpperCase()+ prenom.slice(1)+" a "+tab_personnes[prenom]+" ans";
-			alert(chaine);
 		}
 	</script>
 	</head>
