@@ -29,7 +29,37 @@
             xhr.send(JSON.stringify(myObj));
 
         }
+
+        function deleteUndefined(id) {
+
+            var xhr = new XMLHttpRequest();
+            var url = "http://loisirs-web-backend.cleverapps.io/users/" + id;
+            xhr.open("DELETE", url, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json.name + ", " + json.password);
+                }
+            };
+            xhr.send();
+        }
+
+        function JSONtoUndefined(reponse) {
+
+            myObj = JSON.parse(reponse);
+
+            myObj.forEach(function (personne) {
+
+                if (personne.name == "undefined") {
+                    console.log("test");
+                }
+
+            });
+        }
+
         
+
     </script>
 
 </head>
@@ -52,6 +82,9 @@
         </tr>
 
         <tr>
+            <td>
+                <button onclick="deleteUndefined()">Supprimer</button>
+            </td>
             <td>
                 <button onclick="sendPersonne()">Envoyer</button>
             </td>
