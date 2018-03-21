@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        function age() {
+            var tab_personnes = {
+                "anatole": 19,
+                "bernard": 45,
+                "christophe": 34,
+                "dominique": 55,
+                "franck": 28,
+                "georges": 78,
+                "lucas": 12,
+                "madeleine": 30,
+                "pierre": 25
+            };
+            // À compléter
+
+
+            var entre = document.getElementById('monInput').value;
+            if (entre == "") {
+
+                alert("Le champ et vide");
+            }
+            for (o in tab_personnes) {
+
+                if (o == entre) {
+                    alert(o.charAt(0).toUpperCase() + o.slice(1) + " a " + tab_personnes[o] + " ans");
+                }
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <input id="monInput" type="text" />
+    <button onclick='age()'>Quel age as-tu ?</button>
+</body>
+
+</html>
