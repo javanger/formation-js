@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div id="tab"></div>
+    <form id="general" action=" " method="post">
+        <label for="nom">Nom :</label>
+        <input id="nom" type="text" name="name">
+        <label for="password">password :</label>
+        <input id="password" type="text" name="name">
+
+
+
+        <input type="submit" onClick="sendJson(event)">
+    </form>
+
+    <script>
+        const req = new XMLHttpRequest();
+
+        req.onreadystatechange = function (event) {
+            // XMLHttpRequest.DONE === 4
+            if (this.readyState === XMLHttpRequest.DONE) {
+                if (this.status === 200) {
+                    //console.log("Réponse reçue: %s", this.responseText);
+                    var reponse = this.responseText;
+
+                    parseJson(reponse);
+
+                } else {
+                    console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                }
+            }
+        };
+
+
+
+        req.open('GET', 'http://loisirs-web-backend.cleverapps.io/users', true);
+        req.send(null);
+
+        function parseJson(r) {
+
+            monJson = JSON.parse(r);
+            monTableau = "<table border = '1'><tr>";
+            monJson.forEach(personne => {
+
+                monTableau += "<td>" + personne.id + "</td>" + "<td>" + personne.name + "</td>" + "<td>" + personne.password + "</td></tr>"
+
+            }
+
+
+            );
+
+            monTableau += "</table>"
+
+            document.getElementById("tab").innerHTML = monTableau;
+
+
+        }
+
+
+
+
+        function sendJson(event) {
+            event.preventDefault();
+            console.log('coucou');
+            var nom = document.getElementById('nom').value;
+
+            var password = document.getElementById('password').value;
+           
+
+            var value = JSON.stringify({name : nom, password : password});
+
+            const req = new XMLHttpRequest();
+
+            req.onreadystatechange = function (event) {
+                // XMLHttpRequest.DONE === 4
+                if (this.readyState === XMLHttpRequest.DONE) {
+                    if (this.status === 200) {
+                        console.log("Réponse reçue: %s", this.responseText);
+
+
+                    } else {
+                        console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                    }
+                }
+            };
+            req.open('POST', 'http://loisirs-web-backend.cleverapps.io/users', true);
+
+            req.setRequestHeader("Content-Type","application/json");
+
+
+
+
+            req.send(value);
+
+
+
+
+
+
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
