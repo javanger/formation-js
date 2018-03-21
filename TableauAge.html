@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        function age(){		
+            var tab_personnes = [
+				{ nom: 'anatole', age: 19 },
+				{ nom: 'bernard', age: 45 },
+				{ nom: 'christophe', age: 34 },
+				{ nom: 'dominique', age: 55 },
+				{ nom: 'franck', age: 28 },
+                { nom: "georges", age: 78 },
+				{ nom: 'lucas', age: 12 },
+				{ nom: 'madeleine', age: 30 },
+				{ nom: 'pierre', age: 25 }
+			]
+
+            var saisie = document.getElementById('monInput').value;
+            var chaine = "";
+            if (saisie == ""){
+                alert('veuillez saisir une valeur');
+            }
+            else{
+                for(i = 0 ; i < tab_personnes.length; i++){
+                    if(tab_personnes[i].nom.includes(saisie)){
+                        chaine += tab_personnes[i].nom.charAt(0).toUpperCase() + tab_personnes[i].nom.slice(1) + " a " + tab_personnes[i].age + " ans" + ", ";
+                    };
+                };
+                alert(chaine);
+            }
+		}
+    </script>
+</head>
+<body>
+    <input id="monInput" type="text" />
+    <button onclick='age()'>Quel age as-tu ?</button>
+</body>
+</html>
