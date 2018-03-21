@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        function age() {
+
+            /*
+                    var tab_personnes = [{ nom: "anatole", age: 19 },
+                        { nom: "bernard", age: 45 },
+                        { nom: "christophe", age: 34 },
+                        { nom: "dominique", age: 55 },
+                        { nom: "franck", age: 28 },
+                        { nom: "georges", age: 78 },
+                        { nom: "lucas", age: 12 },
+                        { nom: "madeleine", age: 30 },
+                        { nom: "pierre", age: 25 }]
+            */
+
+            var tab_personnes = {
+                "anatole": 19,
+                "bernard": 45,
+                "christophe": 34,
+                "dominique": 55,
+                "franck": 28,
+                "georges": 78,
+                "lucas": 12,
+                "madeleine": 30,
+                "pierre": 25
+            };
+
+            nom = document.getElementById("monInput").value
+            //var age = ""
+            alert(tab_personnes[nom])
+        }
+    </script>
+</head>
+
+<body>
+    <input id="monInput" type="text" />
+    <button onclick='age()'>Quel age as-tu ?</button>
+</body>
+
+</html>
