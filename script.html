@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var tab = "<table border=1 ><tr>";
+        
+        for (let i = 1; i <= 12; i++) {
+            
+            tab += "<td width=20>" + i + "</td>";
+            if(i % 4 == 0) {
+                tab += "</tr><tr>";
+            }
+        }
+
+        tab += "</table>"
+        
+        document.writeln(tab);
+    </script>
+</body>
+</html>
