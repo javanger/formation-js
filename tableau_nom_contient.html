@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+	<script type="text/javascript">
+		function age(){		
+			var tab_personnes = [
+				{ nom: 'anatole', age: 19 },
+				{ nom: 'bernard', age: 45 },
+				{ nom: 'christophe', age: 34 },
+				{ nom: 'dominique', age: 55 },
+				{ nom: 'franck', age: 28 },
+				{ nom: 'lucas', age: 78 },
+				{ nom: "georges", age: 78 },
+				{ nom: 'madeleine', age: 12 },
+				{ nom: 'pierre', age: 30 }
+			]
+
+			var nom = document.getElementById("monInput").value;
+
+            var tousLesNoms = "";
+
+			tab_personnes.forEach(function (personne) {
+
+                if(personne.nom.indexOf(nom) != -1) {
+                    tousLesNoms += personne.nom + " ";
+                }
+
+			})
+
+            alert(tousLesNoms);
+		}
+	</script>
+	</head>
+	<body>
+		<input id="monInput" type="text" />
+		<button onclick='age()'>Chercher prénoms</button>
+	</body>
+</html>
